@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: registration-service
+        uri: lb://REGISTRATION-SERVICE
+        predicates:
+        - Path=/registration/**
+
+server:
+  port: 8989
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
+
+      
+whitelistedIp : 172.18.1.175, 127.0.0.1
